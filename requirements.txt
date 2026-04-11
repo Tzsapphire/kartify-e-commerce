@@ -1,0 +1,15 @@
+# to install
+
+
+# for pg  and sf connections
+psycopg2-binary 
+sqlalchemy
+snowflake-connector-python
+snowflake-sqlalchemy
+pandas #to inspect tables
+
+
+#####
+
+# python-dotenv
+# pandas
