@@ -6,8 +6,8 @@
 # pip3 install snowflake-connector-python; pip3 install --upgrade snowflake-sqlalchemy
 
 
-from sqlalchemy import create_engine
-# import pandas as pd
+from sqlalchemy import create_engine, inspect
+import pandas as pd
 
 
 def pg_engine():
