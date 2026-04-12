@@ -1,6 +1,5 @@
 # define connections
 
-#import modules
     # install packages (run on terminal)
 # pip3 install psycopg2-binary; 
 # pip3 install sqlalchemy ; create_engine, inspect, text  #from sqlalchemy.engine import URL
@@ -9,8 +8,7 @@
 # pip3 install python-dotenv; python -m pip install python-dotenv 
 
 
-# >> PART TWO:
-
+# >> import modules:
 from sqlalchemy.engine import URL as sa_URL
 from sqlalchemy import create_engine, text
 from snowflake.sqlalchemy import URL as sf_URL
@@ -19,7 +17,7 @@ from dotenv import load_dotenv
 load_dotenv('conn_setup.env')
 
 
-# creating source engine connection function
+# creating source database connection function
 
 def pg_engine():
     pg_sa_url = sa_URL.create(
@@ -45,3 +43,35 @@ def pg_engine():
 
 pg_engine()
 
+
+# creating destination warehouse connection function
+
+def sf_engine(schemaname):
+    dest_url = sf_URL(
+        account = os.getenv("SNOWFLAKE_ACCOUNT") ,
+        user = os.getenv("SNOWFLAKE_USER") ,
+        password = os.getenv("SNOWFLAKE_PASSWORD"),
+        database = os.getenv("SNOWFLAKE_DATABASE"),
+        schema = schemaname,
+        warehouse = os.getenv("SNOWFLAKE_WAREHOUSE"),
+        role= os.getenv("SNOWFLAKE_ROLE")
+    )
+    try:
+        print('creating engine connection to destination... \n')
+        dest_eng = create_engine(dest_url)
+        print('testing destination database connection...')
+        with dest_eng.connect() as dest_conn:
+           db_query =text('select CURRENT_DATABASE();')
+           schema_query =text('select CURRENT_SCHEMA();')
+           dest_db = dest_conn.execute(db_query).scalar()
+           schema_db = dest_conn.execute(schema_query).scalar()
+           print(f'connection to {dest_db} and {schema_db} successful \n')
+        return dest_eng
+    except Exception as e:
+        print('connection failed, error is: ', e)
+
+raw_schema_eng = sf_engine(os.getenv("SCHEMA_BRONZE"))
+silver_schema_eng = sf_engine(os.getenv("SCHEMA_SILVER"))
+gold_schema_eng = sf_engine(os.getenv("SCHEMA_GOLD"))
+
+# next
