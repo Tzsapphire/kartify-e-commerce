@@ -14,7 +14,7 @@ from sqlalchemy import create_engine, text
 from snowflake.sqlalchemy import URL as sf_URL
 import os 
 from dotenv import load_dotenv
-load_dotenv('conn_setup.env')
+load_dotenv('.env')
 
 
 # creating source database connection function
