@@ -36,12 +36,10 @@ def pg_engine():
             print('testing database connection...')
             pg_database = pg_conn.execute(query).scalar()
             print("connected to database: ", pg_database, "\n")
-        return src_engine
+        return src_engine, pg_database
     except Exception as e:
         print('error connecting to database, details: ', e)
 
-
-pg_engine()
 
 
 # creating destination warehouse connection function
@@ -70,8 +68,15 @@ def sf_engine(schemaname):
     except Exception as e:
         print('connection failed, error is: ', e)
 
-raw_schema_eng = sf_engine(os.getenv("SCHEMA_BRONZE"))
-silver_schema_eng = sf_engine(os.getenv("SCHEMA_SILVER"))
-gold_schema_eng = sf_engine(os.getenv("SCHEMA_GOLD"))
+# raw_schema_eng = sf_engine(os.getenv("SCHEMA_BRONZE"))
+# silver_schema_eng = sf_engine(os.getenv("SCHEMA_SILVER"))
+# gold_schema_eng = sf_engine(os.getenv("SCHEMA_GOLD"))
 
 # next
+if __name__ == "__main__":
+    pg_engine()
+    engine, db_name = pg_engine()
+    raw_schema_eng = sf_engine(os.getenv("SCHEMA_BRONZE"))
+    silver_schema_eng = sf_engine(os.getenv("SCHEMA_SILVER"))
+    gold_schema_eng = sf_engine(os.getenv("SCHEMA_GOLD"))
+

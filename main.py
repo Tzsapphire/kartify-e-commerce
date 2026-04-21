@@ -2,62 +2,45 @@
 
 # ## Kartify e-commerce at https://api-production-8692.up.railway.app/
 
-# pip install snowflake-connector-python, psycopg2, --upgrade snowflake-sqlalchemy
-
 # >> import modules:
-from sqlalchemy.engine import URL as sa_URL
+# from sqlalchemy.engine import URL as sa_URL
 from sqlalchemy import create_engine, text, inspect
-from snowflake.sqlalchemy import URL as sf_URL
+# from snowflake.sqlalchemy import URL as sf_URL
 import os , pandas as pd
-from dotenv import load_dotenv
-load_dotenv('.env')
+# from dotenv import load_dotenv
+# load_dotenv('.env')
+
+# get details from the Connections
+from connections import pg_engine  
 
 
-# creating source database connection function
 
-def pg_engine():
-    pg_sa_url = sa_URL.create(
-        drivername="postgresql+psycopg2",
-        username= os.getenv("postgres_user"),
-        password= os.getenv("postgres_password"),
-        host= os.getenv("postgres_host"),
-        port=os.getenv("postgres_port"),
-        database= os.getenv("postgres_database")
-    )
-    print('creating engine connection to source... \n')
-    try:
-        src_engine = create_engine(pg_sa_url)
-        with src_engine.connect() as pg_conn:
-            query=text('select CURRENT_DATABASE();')
-            print('testing database connection...')
-            pg_database = pg_conn.execute(query).scalar()
-            print("connected to database: ", pg_database, "\n")
-        return src_engine
-    except Exception as e:
-        print('error connecting to database, details: ', e)
-
-
-variable1 = pg_engine()
+postgres_conn, postgres_db = pg_engine()
 
 
 #  Extracting tables from the source database
 def extract(src_engine, schema_name):
     print("engine connection created?, analysing tables:")
     inspector = inspect(src_engine)
-    schema_name = input("\n what schema should we look at? ")
+    # schema_name = input("\n what schema should we look at? ")
     table_names = inspector.get_table_names(schema = schema_name)
-    print("\n the tables present in your schema are the following: ", table_names, "\n")
+    print("\n the tables present in", schema_name, "are the following: ", table_names, "\n")
     dict_list={}
     for tables in table_names:
         df= pd.read_sql(f'select * from "{schema_name}"."{tables}"', src_engine)
         file_name = f"{tables}_df"
         dict_list[file_name] = df #store as key and vaariables
         # globals()[file_name] = df  #store the dfs in the global space
-    print("keys in this 'dict_list' dictionary \n", dict_list.keys(), "\n")
+    print("tables renamed in the dictionary as dataframes \n", dict_list.keys(), "\n")
     return dict_list
 
-variable2 = extract(src_engine=..., schema_name=...)
-print({variable2}.keys())
+
+pg_table_dict = extract(src_engine=postgres_conn, schema_name="public")
+
+print(f"you are connected to the {postgres_db} database")
+print(pg_table_dict.keys())
+# to call a table: pg_table_dict[datafarme name]
+
 
 
 
