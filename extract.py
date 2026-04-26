@@ -8,10 +8,9 @@ from sqlalchemy import inspect
 import pandas as pd
 
 # get details from the Connections
-from connections import pg_engine  
+from connections import src_pg_engine  
 
-
-postgres_conn, postgres_db = pg_engine()
+postgres_conn, postgres_db = src_pg_engine()
 
 
 #  Extracting tables from the source database
@@ -27,7 +26,8 @@ def extract(src_engine, schema_name):
         file_name = f"{tables}_df"
         dict_list[file_name] = df #store as key and vaariables
         # globals()[file_name] = df  #store the dfs in the global space
-    print("tables renamed in the dictionary as dataframes \n", dict_list.keys(), "\n")
+    # print("tables renamed in the dictionary as dataframes \n", dict_list.keys(), "\n")
+    print("tables renamed in the dictionary as dataframes \n")
     return dict_list
 
 

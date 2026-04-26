@@ -11,11 +11,11 @@ import os , pandas as pd
 # load_dotenv('.env')
 
 # get details from the Connections
-from connections import pg_engine  
+from connections import src_pg_engine  
 
 
 
-postgres_conn, postgres_db = pg_engine()
+postgres_conn, postgres_db = src_pg_engine()
 
 
 #  Extracting tables from the source database
