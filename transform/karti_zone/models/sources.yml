@@ -1,38 +1,229 @@
-# dict_keys(['', '', '', '', '', '', '', '', '', ''])
 
 sources:
   - name: pg_raw_schema
     description: This contains the source raw files
-    database: kartify_zone
-    schema: raw
+    database: kartify_zone #in the local_postgres
+    schema: raw #and sending to test_raw
+    config:
+      freshness:
+        warn_after:
+          count: 
+          period:
+        error_after:
+          count:
+          period:
+      loaded_at_field:  
     tables:
       - name: categories_df
-        description: This contains the product categories 
-      
-      - name: products_df
-        description: This contains the various products
-
-      - name: customers_df
-        description: This contains the customers who have registered
-
-      - name: orders_df
-        description: This contains the orders placed by customers
+        columns:
+          - name: id
+            data_type: bigint
+          - name: name
+            data_type: text
+          - name: slug
+            data_type: text
+          - name: is_active
+            data_type: boolean
+          - name: created_at
+            data_type: timestamp with time zone
+          - name: updated_at
+            data_type: timestamp with time zone
 
       - name: coupons_df
-        description: This contains the coupons available for placing an order
+        columns:
+          - name: id
+            data_type: bigint
+          - name: code
+            data_type: text
+          - name: discount_pct
+            data_type: double precision
+          - name: max_uses
+            data_type: bigint
+          - name: used_count
+            data_type: bigint
+          - name: is_active
+            data_type: boolean
+          - name: expires_at
+            data_type: text
+          - name: created_at
+            data_type: timestamp with time zone
+          - name: updated_at
+            data_type: timestamp with time zone
 
-      - name: order_items_df
-        description: This contains the order items contained in each order
-
-      - name: shipping_df
-        description: This contains the shipping details of the orders
-
-      - name: payments_df
-        description: This contains the paymenet information for the orders
+      - name: customers_df
+        columns:
+          - name: id
+            data_type: bigint
+          - name: first_name
+            data_type: text
+          - name: last_name
+            data_type: text
+          - name: email
+            data_type: text
+          - name: phone
+            data_type: text
+          - name: address
+            data_type: text
+          - name: city
+            data_type: text
+          - name: state
+            data_type: text
+          - name: country
+            data_type: text
+          - name: postal_code
+            data_type: text
+          - name: password
+            data_type: text
+          - name: is_active
+            data_type: boolean
+          - name: created_at
+            data_type: timestamp with time zone
+          - name: updated_at
+            data_type: timestamp with time zone
 
       - name: inventory_df
-        description: This contains the company's inventory
+        columns:
+          - name: id
+            data_type: bigint
+          - name: product_id
+            data_type: bigint
+          - name: quantity
+            data_type: bigint
+          - name: reorder_lvl
+            data_type: bigint
+          - name: created_at
+            data_type: timestamp with time zone
+          - name: updated_at
+            data_type: timestamp with time zone
+
+      - name: order_items_df
+        columns:
+          - name: id
+            data_type: bigint
+          - name: order_id
+            data_type: bigint
+          - name: product_id
+            data_type: bigint
+          - name: quantity
+            data_type: bigint
+          - name: unit_price
+            data_type: double precision
+          - name: total_price
+            data_type: double precision
+          - name: created_at
+            data_type: timestamp with time zone
+          - name: updated_at
+            data_type: timestamp with time zone
+
+      - name: orders_df
+        columns:
+          - name: id
+            data_type: bigint
+          - name: customer_id
+            data_type: bigint
+          - name: coupon_id
+            data_type: double precision
+          - name: status
+            data_type: text
+          - name: subtotal
+            data_type: double precision
+          - name: discount_amount
+            data_type: double precision
+          - name: total
+            data_type: double precision
+          - name: notes
+            data_type: text
+          - name: created_at
+            data_type: timestamp with time zone
+          - name: updated_at
+            data_type: timestamp with time zone
+
+      - name: payments_df
+        columns:
+          - name: id
+            data_type: bigint
+          - name: order_id
+            data_type: bigint
+          - name: method
+            data_type: text
+          - name: status
+            data_type: text
+          - name: amount
+            data_type: double precision
+          - name: reference
+            data_type: text
+          - name: created_at
+            data_type: timestamp with time zone
+          - name: updated_at
+            data_type: timestamp with time zone
+
+      - name: products_df
+        columns:
+          - name: id
+            data_type: bigint
+          - name: category_id
+            data_type: bigint
+          - name: name
+            data_type: text
+          - name: slug
+            data_type: text
+          - name: description
+            data_type: text
+          - name: price
+            data_type: double precision
+          - name: image_url
+            data_type: text
+          - name: is_active
+            data_type: boolean
+          - name: created_at
+            data_type: timestamp with time zone
+          - name: updated_at
+            data_type: timestamp with time zone
 
       - name: reviews_df
-        description: This contains the customer's reviews
+        columns:
+          - name: id
+            data_type: bigint
+          - name: product_id
+            data_type: bigint
+          - name: customer_id
+            data_type: bigint
+          - name: rating
+            data_type: bigint
+          - name: comment
+            data_type: text
+          - name: created_at
+            data_type: timestamp with time zone
+          - name: updated_at
+            data_type: timestamp with time zone
 
+      - name: shipping_df
+        columns:
+          - name: id
+            data_type: bigint
+          - name: order_id
+            data_type: bigint
+          - name: status
+            data_type: text
+          - name: carrier
+            data_type: text
+          - name: tracking_number
+            data_type: text
+          - name: address
+            data_type: text
+          - name: city
+            data_type: text
+          - name: state
+            data_type: text
+          - name: country
+            data_type: text
+          - name: postal_code
+            data_type: text
+          - name: shipped_at
+            data_type: timestamp with time zone
+          - name: delivered_at
+            data_type: timestamp with time zone
+          - name: created_at
+            data_type: timestamp with time zone
+          - name: updated_at
+            data_type: timestamp with time zone
