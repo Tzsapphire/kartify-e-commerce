@@ -18,6 +18,9 @@ sources:
         columns:
           - name: id
             data_type: bigint
+            data_tests:
+              - not_null
+              - unique
           - name: name
             data_type: text
           - name: slug
@@ -33,6 +36,9 @@ sources:
         columns:
           - name: id
             data_type: bigint
+            data_tests:
+              - not_null
+              - unique
           - name: code
             data_type: text
           - name: discount_pct
@@ -54,6 +60,9 @@ sources:
         columns:
           - name: id
             data_type: bigint
+            data_tests:
+              - unique
+              - not_null
           - name: first_name
             data_type: text
           - name: last_name
@@ -85,6 +94,9 @@ sources:
         columns:
           - name: id
             data_type: bigint
+            data_tests:
+              - unique
+              - not_null
           - name: product_id
             data_type: bigint
           - name: quantity
@@ -100,6 +112,9 @@ sources:
         columns:
           - name: id
             data_type: bigint
+            data_tests:
+              - not_null
+              - unique
           - name: order_id
             data_type: bigint
           - name: product_id
@@ -119,6 +134,9 @@ sources:
         columns:
           - name: id
             data_type: bigint
+            data_tests:
+              - unique
+              - not_null
           - name: customer_id
             data_type: bigint
           - name: coupon_id
@@ -142,6 +160,9 @@ sources:
         columns:
           - name: id
             data_type: bigint
+            data_tests:
+              - not_null
+              - unique
           - name: order_id
             data_type: bigint
           - name: method
@@ -161,6 +182,9 @@ sources:
         columns:
           - name: id
             data_type: bigint
+            data_tests:
+              - not_null
+              - unique
           - name: category_id
             data_type: bigint
           - name: name
@@ -184,6 +208,9 @@ sources:
         columns:
           - name: id
             data_type: bigint
+            data_tests:
+              - not_null
+              - unique
           - name: product_id
             data_type: bigint
           - name: customer_id
@@ -201,6 +228,9 @@ sources:
         columns:
           - name: id
             data_type: bigint
+            data_tests:
+              - not_null
+              - unique
           - name: order_id
             data_type: bigint
           - name: status
