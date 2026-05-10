@@ -1,4 +1,6 @@
 
 target/
-dbt_packages/
+# dbt_packages/
 logs/
+
+/home/patie/projects/Kartify_project/kartify-e-commerce/transform/karti_zone/models/sources.yml
