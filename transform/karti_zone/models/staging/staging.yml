@@ -9,6 +9,10 @@ sources:
             data_type: bigint
           - name: category_name
             data_type: text
+            data_tests:
+              - accepted_values:
+                  arguments:
+                    values: ['Sports', 'Home & Kitchen', 'Electronics', 'Clothing', 'Books']
           - name: category_slug
             data_type: text
           - name: cat_is_active
@@ -78,6 +82,11 @@ sources:
             data_type: bigint
           - name: product_id
             data_type: bigint
+            data_tests:
+              - relationships:
+                  arguments:
+                    to: ref('stg_products')
+                    field: product_id
           - name: quantity
             data_type: bigint
           - name: reorder_level
@@ -93,8 +102,18 @@ sources:
             data_type: bigint
           - name: order_id
             data_type: bigint
+            data_tests:
+              - relationships:
+                  arguments:
+                    to: ref('stg_orders')
+                    field: order_id
           - name: product_id
             data_type: bigint
+            data_tests:
+              - relationships:
+                  arguments:
+                    to: ref('stg_products')
+                    field: product_id
           - name: quantity
             data_type: bigint
           - name: unit_price
@@ -112,10 +131,19 @@ sources:
             data_type: bigint
           - name: customer_id
             data_type: bigint
+            data_tests:
+              - relationships:
+                  arguments:
+                    to: ref('stg_customers')
+                    field: customer_id
           - name: coupon_id
             data_type: double precision
           - name: order_status
             data_type: text
+            data_tests:
+              - accepted_values:
+                  arguments:
+                    values: ['cancelled', 'shipped', 'pending', 'processing', 'delivered']
           - name: subtotal
             data_type: double precision
           - name: discount_amount
@@ -135,10 +163,23 @@ sources:
             data_type: bigint
           - name: order_id
             data_type: bigint
+            data_tests:
+              - relationships:
+                  arguments: 
+                    to: ref('stg_orders')
+                    field: order_id
           - name: payment_method
             data_type: text
+            data_tests:
+              - accepted_values:
+                  arguments:
+                    values: ['bank_transfer', 'paypal', 'card']
           - name: payment_status
             data_type: text
+            data_tests:
+              - accepted_values:
+                  arguments:
+                    values: ['failed', 'completed']
           - name: amount
             data_type: double precision
           - name: payment_reference
@@ -154,6 +195,11 @@ sources:
             data_type: bigint
           - name: category_id
             data_type: bigint
+            data_tests:
+              - relationships:
+                  arguments:
+                    to: ref('stg_products')
+                    field: product_id
           - name: product_name
             data_type: text
           - name: product_slug
@@ -162,6 +208,8 @@ sources:
             data_type: text
           - name: price
             data_type: double precision
+            data_tests:
+              - not_null
           - name: image_url
             data_type: text
           - name: is_active
@@ -177,10 +225,25 @@ sources:
             data_type: bigint
           - name: product_id
             data_type: bigint
+            data_tests:
+              - relationships:
+                  arguments:
+                    to: ref('stg_products')
+                    field: 'product_id'
           - name: customer_id
             data_type: bigint
+            data_tests:
+              - relationships:
+                  arguments:
+                    to: ref('stg_customers')
+                    field: 'customer_id'
           - name: rating
             data_type: bigint
+            data_tests:
+              - accepted_values:
+                  arguments:
+                    values: [1, 2, 3, 4, 5]
+                    quote: false
           - name: comment
             data_type: text
           - name: created_at
@@ -194,6 +257,14 @@ sources:
             data_type: bigint
           - name: order_id
             data_type: bigint
+            data_tests:
+              - accepted_values:
+                  arguments:
+                    values: ['in_transit', 'not_shipped', 'delivered']
+              - relationships:
+                  arguments:
+                    to: ref('stg_orders')
+                    field: order_id
           - name: status
             data_type: text
           - name: carrier
