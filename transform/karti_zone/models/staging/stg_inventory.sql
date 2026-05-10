@@ -2,7 +2,7 @@
 
 with source as (
 
-    select * from {{ source('pg_raw_schema', 'order_items_df') }}
+    select * from {{ source('pg_raw_schema', 'inventory_df') }}
 
 ),
 
@@ -10,11 +10,9 @@ renamed as (
 
     select
         id,
-        order_id,
         product_id,
         quantity,
-        unit_price,
-        total_price,
+        reorder_lvl,
         created_at,
         updated_at
 

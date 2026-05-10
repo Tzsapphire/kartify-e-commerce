@@ -2,7 +2,7 @@
 
 with source as (
 
-    select * from {{ source('pg_raw_schema', 'order_items_df') }}
+    select * from {{ source('pg_raw_schema', 'reviews_df') }}
 
 ),
 
@@ -10,11 +10,10 @@ renamed as (
 
     select
         id,
-        order_id,
         product_id,
-        quantity,
-        unit_price,
-        total_price,
+        customer_id,
+        rating,
+        comment,
         created_at,
         updated_at
 

@@ -2,7 +2,7 @@
 
 with source as (
 
-    select * from {{ source('pg_raw_schema', 'customers_df') }}
+    select * from {{ source('pg_raw_schema', 'shipping_df') }}
 
 ),
 
@@ -10,17 +10,17 @@ renamed as (
 
     select
         id,
-        first_name,
-        last_name,
-        email,
-        phone,
+        order_id,
+        status,
+        carrier,
+        tracking_number,
         address,
         city,
         state,
         country,
         postal_code,
-        password,
-        is_active,
+        shipped_at,
+        delivered_at,
         created_at,
         updated_at
 
