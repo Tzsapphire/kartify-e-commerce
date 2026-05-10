@@ -4,15 +4,15 @@ sources:
     description: This contains the source raw files
     database: kartify_zone #in the local_postgres
     schema: raw #and sending to test_raw
-    config:
-      freshness:
-        warn_after:
-          count: 
-          period:
-        error_after:
-          count:
-          period:
-      loaded_at_field:  
+    # config:
+    #   freshness:
+    #     warn_after:
+    #       count: 
+    #       period:
+    #     error_after:
+    #       count:
+    #       period:
+    #   loaded_at_field:  
     tables:
       - name: categories_df
         columns:
