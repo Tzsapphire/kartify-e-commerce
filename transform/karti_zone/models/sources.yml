@@ -1,0 +1,38 @@
+# dict_keys(['', '', '', '', '', '', '', '', '', ''])
+
+sources:
+  - name: pg_raw_schema
+    description: This contains the source raw files
+    database: kartify_zone
+    schema: raw
+    tables:
+      - name: categories_df
+        description: This contains the product categories 
+      
+      - name: products_df
+        description: This contains the various products
+
+      - name: customers_df
+        description: This contains the customers who have registered
+
+      - name: orders_df
+        description: This contains the orders placed by customers
+
+      - name: coupons_df
+        description: This contains the coupons available for placing an order
+
+      - name: order_items_df
+        description: This contains the order items contained in each order
+
+      - name: shipping_df
+        description: This contains the shipping details of the orders
+
+      - name: payments_df
+        description: This contains the paymenet information for the orders
+
+      - name: inventory_df
+        description: This contains the company's inventory
+
+      - name: reviews_df
+        description: This contains the customer's reviews
+
