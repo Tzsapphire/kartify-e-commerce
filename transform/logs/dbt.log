@@ -1,0 +1,51 @@
+[0m19:41:58.284411 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7bf93191a810>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7bf930f7eae0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7bf931b31e20>]}
+
+
+============================== 19:41:58.287219 | 8473377f-588c-40a0-891f-6279b12c9dc5 ==============================
+[0m19:41:58.287219 [info ] [MainThread]: Running with dbt=1.11.8
+[0m19:41:58.287779 [debug] [MainThread]: running dbt with arguments {'target_path': 'None', 'static_parser': 'True', 'use_colors': 'True', 'invocation_command': 'dbt init', 'send_anonymous_usage_stats': 'True', 'debug': 'False', 'log_cache_events': 'False', 'printer_width': '80', 'write_json': 'True', 'profiles_dir': '/home/patie/.dbt', 'warn_error': 'None', 'fail_fast': 'False', 'version_check': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'quiet': 'False', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'use_experimental_parser': 'False', 'indirect_selection': 'eager', 'log_format': 'default', 'no_print': 'None', 'log_path': 'logs', 'introspect': 'True', 'empty': 'None'}
+[0m19:42:06.839686 [debug] [MainThread]: Starter project path: /home/patie/projects/Kartify_project/kartify-e-commerce/transform/trans-kart/lib/python3.12/site-packages/dbt/include/starter_project
+[0m19:42:06.844249 [info ] [MainThread]: 
+Your new dbt project "karti_zone" was created!
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m19:42:06.844745 [info ] [MainThread]: Setting up your profile.
+[0m19:44:24.734454 [info ] [MainThread]: Profile karti_zone written to /home/patie/.dbt/profiles.yml using target's profile_template.yml and your supplied values. Run 'dbt debug' to validate the connection.
+[0m19:44:24.737007 [debug] [MainThread]: Resource report: {"command_name": "init", "command_success": true, "command_wall_clock_time": 146.4942, "process_in_blocks": "160", "process_kernel_time": 0.183238, "process_mem_max_rss": "107628", "process_out_blocks": "80", "process_user_time": 1.350968}
+[0m19:44:24.737712 [debug] [MainThread]: Command `dbt init` succeeded at 19:44:24.737584 after 146.50 seconds
+[0m19:44:24.738246 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7bf931079f10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7bf930b87d10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7bf930acfef0>]}
+[0m19:44:24.738709 [debug] [MainThread]: Flushing usage events
+[0m19:44:25.139830 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m19:44:33.712371 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7b4b71fded80>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7b4b714846b0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7b4b6f971f70>]}
+
+
+============================== 19:44:33.717441 | df7b893d-0562-42ea-8ad1-4af37c8c01c5 ==============================
+[0m19:44:33.717441 [info ] [MainThread]: Running with dbt=1.11.8
+[0m19:44:33.718077 [debug] [MainThread]: running dbt with arguments {'use_experimental_parser': 'False', 'profiles_dir': '/home/patie/.dbt', 'static_parser': 'True', 'quiet': 'False', 'partial_parse': 'True', 'log_cache_events': 'False', 'no_print': 'None', 'indirect_selection': 'eager', 'write_json': 'True', 'printer_width': '80', 'version_check': 'True', 'fail_fast': 'False', 'target_path': 'None', 'cache_selected_only': 'False', 'introspect': 'True', 'empty': 'None', 'warn_error': 'None', 'log_format': 'default', 'invocation_command': 'dbt debug', 'debug': 'False', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'log_path': 'logs', 'send_anonymous_usage_stats': 'True', 'use_colors': 'True'}
+[0m19:44:33.738513 [info ] [MainThread]: dbt version: 1.11.8
+[0m19:44:33.738977 [info ] [MainThread]: python version: 3.12.3
+[0m19:44:33.739274 [info ] [MainThread]: python path: /home/patie/projects/Kartify_project/kartify-e-commerce/transform/trans-kart/bin/python3
+[0m19:44:33.739576 [info ] [MainThread]: os info: Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39
+[0m19:44:33.793832 [info ] [MainThread]: Using profiles dir at /home/patie/.dbt
+[0m19:44:33.794319 [info ] [MainThread]: Using profiles.yml file at /home/patie/.dbt/profiles.yml
+[0m19:44:33.794642 [info ] [MainThread]: Using dbt_project.yml file at /home/patie/projects/Kartify_project/kartify-e-commerce/transform/dbt_project.yml
+[0m19:44:33.794942 [error] [MainThread]: Encountered an error:
+Internal Error
+  Profile should not be None if loading profile completed
+[0m19:44:33.795700 [debug] [MainThread]: Resource report: {"command_name": "debug", "command_success": false, "command_wall_clock_time": 0.12946567, "process_in_blocks": "57008", "process_kernel_time": 0.229763, "process_mem_max_rss": "107840", "process_out_blocks": "8", "process_user_time": 1.37858}
+[0m19:44:33.796167 [debug] [MainThread]: Command `dbt debug` failed at 19:44:33.796076 after 0.13 seconds
+[0m19:44:33.796517 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7b4b71f0f230>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7b4b6f8813a0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7b4b6ef6b410>]}
+[0m19:44:33.796930 [debug] [MainThread]: Flushing usage events
+[0m19:44:34.207031 [debug] [MainThread]: An error was encountered while trying to flush usage events
