@@ -1,3 +1,4 @@
+-- dbt run-operation generate_base_model --args '{"source_name": "raw1", "table_name": "inventory_df"}'
 
 
 with source as (
@@ -9,10 +10,10 @@ with source as (
 renamed as (
 
     select
-        id,
+        id as inventory_id,
         product_id,
         quantity,
-        reorder_lvl,
+        reorder_lvl as reorder_level,
         created_at,
         updated_at
 
@@ -21,4 +22,3 @@ renamed as (
 )
 
 select * from renamed
-

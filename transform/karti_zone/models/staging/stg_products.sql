@@ -9,13 +9,13 @@ with source as (
 renamed as (
 
     select
-        id,
+        id as product_id,
         category_id,
-        name,
-        slug,
-        description,
+        lower(trim(name)) as product_name,
+        lower(trim(slug)) as product_slug,
+        trim(description) as product_description,
         price,
-        image_url,
+        nullif((image_url), 'None') as image_url,
         is_active,
         created_at,
         updated_at

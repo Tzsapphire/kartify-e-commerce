@@ -9,10 +9,10 @@ with source as (
 renamed as (
 
     select
-        id,
-        name,
-        slug,
-        is_active,
+        id as category_id, --ensure no duplicates
+        initcap(trim(name)) as category_name,
+        lower(slug) as category_slug, --ensure no duplicates
+        is_active as cat_is_active,
         created_at,
         updated_at
 

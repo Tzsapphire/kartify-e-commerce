@@ -9,12 +9,12 @@ with source as (
 renamed as (
 
     select
-        id,
+        id as payment_id,
         order_id,
-        method,
-        status,
+        lower(trim(method)) as payment_method,
+        lower(trim(status)) as payment_status,
         amount,
-        reference,
+        nullif(trim(reference), '') as payment_reference,
         created_at,
         updated_at
 
@@ -23,4 +23,3 @@ renamed as (
 )
 
 select * from renamed
-

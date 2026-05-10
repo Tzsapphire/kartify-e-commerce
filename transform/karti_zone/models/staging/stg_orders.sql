@@ -1,5 +1,4 @@
 
-
 with source as (
 
     select * from {{ source('pg_raw_schema', 'orders_df') }}
@@ -9,19 +8,18 @@ with source as (
 renamed as (
 
     select
-        id,
+        id as order_id,
         customer_id,
         coupon_id,
-        status,
+        lower(trim(status)) as order_status,
         subtotal,
         discount_amount,
         total,
-        notes,
+        nullif(nullif(trim(notes), 'None'), '') as notes,
         created_at,
         updated_at
 
     from source
-
 )
 
 select * from renamed

@@ -9,11 +9,11 @@ with source as (
 renamed as (
 
     select
-        id,
+        id as review_id,
         product_id,
         customer_id,
         rating,
-        comment,
+        nullif(trim(comment), 'None') as comment,
         created_at,
         updated_at
 
